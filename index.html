@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔方</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cube{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform: rotate3d(1, 1, 2, 60deg);
+			transform-style: preserve-3d;
+			transition: all 1s;
+            /* animation: history 5s ease infinite; */
+			/* 动画的时间 */
+			animation-duration: 5s;
+			/* 动画状态改变的速度变化情况 */
+			animation-timing-function: linear;
+			/* 动画延迟时间 */
+			animation-delay: 0s;
+			/* 动画迭代次数 */
+			animation-iteration-count: infinite;
+			/* 动画播放的方向 正常normal*/
+			/* animation-direction: reverse; */
+			/* 动画填充模式：是否将最后一帧保留起来forwards */
+			/* animation-fill-mode: forwards; */
+			/* 设置动画暂停或者执行 */
+			animation-play-state: running;
+			/* 动画名称，通过动画名称寻找关键帧 */
+			animation-name: rorate;
+        }
+
+        .child{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left:0;
+            top:0;
+            opacity: 0.6;
+            background-size: cover;
+            background-position: center;
+            transition: all 1s;
+        }
+
+        .c1{
+            background-image: url("img/1.jpg");
+            transform: translateZ(100px);
+        }
+
+        .c2{
+            background-image: url("img/2.jpg");
+            transform: translateZ(-100px);
+        }
+
+        .c3 {
+			background-image: url("img/3.jpg");
+			transform: rotateX(90deg) translateZ(100px)
+		}
+
+        .c4 {
+			background-image: url("img/4.jpg");
+			transform: rotateX(-90deg) translateZ(100px)
+		}
+
+        .c5 {
+			background-image: url("img/5.jpg");
+			transform: rotateY(-90deg) translateZ(100px)
+		}
+
+        .c6 {
+			background-image: url("img/6.jpg");
+			transform: rotateY(90deg) translateZ(100px)
+		}
+
+        .cube:hover .c1 {
+			transform: translateZ(200px);
+		}
+
+        .cube:hover .c2 {
+			transform: translateZ(-200px);
+		}
+
+        .cube:hover .c3 {
+			transform: rotateX(90deg) translateZ(200px)
+		}
+
+        .cube:hover .c4 {
+			transform: rotateX(-90deg) translateZ(200px)
+		}
+
+        .cube:hover .c5 {
+			transform: rotateY(-90deg) translateZ(200px)
+		}
+
+        .cube:hover .c6 {
+			transform: rotateY(90deg) translateZ(200px)
+		}
+
+		.cube:hover {
+			transform: rotate3d(1, 1, 2, 360deg);
+            animation-play-state:paused
+		}
+
+        @keyframes rorate {
+			0%{
+                transform: rotate3d(1, 1, 2, 60deg);
+            }
+
+            50%{
+                transform: rotate3d(1, 1, 2, 240deg);
+            }
+
+            100%{
+                transform: rotate3d(1, 1, 2, 420deg);
+            }
+		}
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="child c1"></div>
+        <div class="child c2"></div>
+        <div class="child c3"></div>
+        <div class="child c4"></div>
+        <div class="child c5"></div>
+        <div class="child c6"></div>
+    </div>
+</body>
+</html>
